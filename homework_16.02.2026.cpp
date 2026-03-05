@@ -13,7 +13,7 @@ T* merge(const T* const* a, size_t sa, const size_t* sai, T* c)
     {
       curr[i] = 0;
     }
-    T* out = c;
+    T* out = c; // Оператор копирования
     for (size_t i = 0; i < tot_Size; ++i) 
     {
       bool found = false;
@@ -22,15 +22,15 @@ T* merge(const T* const* a, size_t sa, const size_t* sai, T* c)
       {
         if (curr[j] < sai[j]) 
         {
-          if (!found || a[j][curr[j]] < a[idx][curr[idx]]) 
+          if (!found || a[j][curr[j]] < a[idx][curr[idx]]) // Оператор сравнение (<)
           {
             idx = j;
             found = true;
           }
         }
       }
-      *out = a[idx][curr[idx]];
-      ++out;
+      *out = a[idx][curr[idx]]; // Оператор копирования
+      ++out; // Преинкремент
       ++curr[idx];
   }
   delete[] curr;
